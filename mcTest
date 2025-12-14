@@ -1,0 +1,22 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+N = 10_000
+simulations = 100
+
+# generate steps: shape = (simulations, N)
+steps = np.random.choice([1, -1], size=(simulations, N))
+
+# cumulative sum for each simulation
+cumulative = np.cumsum(steps, axis=1)
+
+# average cumulative sum across simulations
+avg_cumulative = cumulative.mean(axis=0)
+
+plt.figure(figsize=(8, 5))
+plt.plot(avg_cumulative)
+plt.axhline(0)
+plt.title("Average Cumulative Sum Across 100 Simulations")
+plt.xlabel("Time")
+plt.ylabel("Average Cumulative Sum")
+plt.show()
